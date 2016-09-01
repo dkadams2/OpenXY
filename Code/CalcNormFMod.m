@@ -25,7 +25,7 @@ switch Settings.HROIMMethod
             clear global rs cs Gs
             %     [F SSE] = CalcF(I1,I0,g,F,ImageInd,Settings,Settings.Material); % old version
             [F SSE] = CalcF(I1,I0,g,eye(3),ImageInd,Settings,Settings.Phase{ImageInd}); % new DTF
-            [R U] = poldec(F);
+            [R U] = poldec(F); 
             g=R'*g;
         end
         
@@ -37,7 +37,7 @@ switch Settings.HROIMMethod
             clear global rs cs Gs
             %     [F SSE] = CalcF(I1,I0,g,F,ImageInd,Settings,Settings.Material); % old version
             [F SSE] = CalcF(I1,I0,g,eye(3),ImageInd,Settings,Settings.Phase{ImageInd}); % new DTF
-            [R U] = poldec(F);
+            [R U] = poldec(F); 
             g=R'*g;
         end
         F=eye(3);
@@ -55,7 +55,7 @@ switch Settings.HROIMMethod
             [F SSE] = CalcF(I1,I0,g,F,ImageInd,Settings,Settings.Phase{ImageInd});
         end
         
-        [R U] = poldec(F);
+        [R U] = poldec(F); 
 end
 
 U=U-eye(3);
@@ -69,6 +69,10 @@ U = triu(U);
 % else
 %normF = sum(sum((U.*U))); experimentally removed by Craig and Tim and replaced by below, Aug27 2014
 normF=sum(sum((U.*U)));
+
+%Making normF=SSE should make it so that the shift is minimized and not the
+%strain. Changed experimentally by Derrik Adams 2/9/16
+% normF=SSE;
 % end
 
 % disp(F)

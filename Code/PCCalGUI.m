@@ -178,6 +178,7 @@ function savenclose_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 planefitpanel_SelectionChangeFcn(handles.planefitpanel, eventdata, handles);
+
 handles = guidata(hObject);
 YesNo = 'Yes';
 if ~handles.isset
@@ -326,7 +327,7 @@ if handles.VanPont
     Settings.CalibrationPointsPC = CalibrationPointsPC;
     
     psize = Settings.PhosphorSize;
-    
+    keyboard %NOT IN ORIGINAL CODE
     handles.MeanXstar = mean(Settings.CalibrationPointsPC(:,1)+(Settings.XData(Settings.CalibrationPointIndecies))/psize);
     handles.MeanYstar = mean(Settings.CalibrationPointsPC(:,2)-(Settings.YData(Settings.CalibrationPointIndecies))/psize*sin(Settings.SampleTilt));
     handles.MeanZstar = mean(Settings.CalibrationPointsPC(:,3)-(Settings.YData(Settings.CalibrationPointIndecies))/psize*cos(Settings.SampleTilt));
@@ -384,7 +385,7 @@ if handles.VanPont
     
     cla(handles.axes2)
     handles.calibrated = 1;
-    
+    keyboard %NOT IN ORIGINAL CODE
     planefitpanel_SelectionChangeFcn(handles.planefitpanel, eventdata, handles);
     
     handles = guidata(hObject);
